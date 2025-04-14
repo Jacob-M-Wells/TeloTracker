@@ -1,5 +1,8 @@
-# TeloTracker
 <p align="center"><img src="images/telotracker_banner_v1.png" alt="TeloTracker" width="70%"></p>
+
+
+
+# TeloTracker
 Yeast Telomere Identification in Nanopore Reads
 
 `TeloTracker` is a Python package designed to track and visualize Oxford Nanopore Technology (ONT) Sequencing of yeast telomeres. `TeloTracker` was specifically developed to track and analyze the development of Alternative Lengthening of Telomeres in yeast, but the program can be appied/adapted to follow the dynamics of yeast telomeres in general.
