@@ -1,0 +1,75 @@
+{% set name = "telotracker" %}
+{% set version = "1.0.0" %}
+
+package:
+  name: {{ name }}
+  version: {{ version }}
+
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+
+build:
+  noarch: python
+  number: 1
+  script: {{ PYTHON }} -m pip install --no-deps --ignore-installed .
+  run_exports:
+    - {{ pin_subpackage(name, max_pin="x.x") }}
+
+source:
+  path: .
+  # url: https://github.com/Jacob-M-Wells/TeloTracker/archive/v{{ version }}.tar.gz
+  # sha256: 1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef
+
+requirements:
+  host:
+    - python=3.11
+    - pip
+    - setuptools
+  run:
+    - python=3.11
+    - python-dateutil
+    - python-edlib
+    - numpy
+    - pandas
+    - pandas-flavor
+    - scipy
+    - matplotlib
+    - seaborn
+    - pingouin
+    - biopython
+    - pysam
+    - parasail-python
+    - blast
+    - repeatmasker
+    - porechop_abi
+    - clustalo
+    - flye
+    - minimap2
+    - quast
+    - medaka
+    - mummer
+    - muscle
+    - samtools
+    - bcftools
+    - bedtools
+    - rmblast
+    - pip:
+        - pod5    
+
+test:
+  commands:
+    - telotracker --help
+    - telotracker --version
+    - telotracker subfunction1 --help
+
+about:
+  home: https://github.com/Jacob-M-Wells/TeloTracker
+  license: MIT
+  license_file: LICENSE
+  summary: "TeloTracker: A tool for telomere analysis in yeast."
+
+extra:
+  recipe-maintainers:
+    - Jacob-M-Wells
