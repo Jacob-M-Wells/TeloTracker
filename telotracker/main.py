@@ -25,11 +25,12 @@ def main():
     Entry point for the command line interface.
     """
     # Create the argument parser.
-    parser = argparse.ArgumentParser(description='telotracker: a description of what your tool does',
-                                     formatter_class=argparse.RawTextHelpFormatter)
+    parser = argparse.ArgumentParser(
+        description="""TeloTracker: a tool to track telomere/chromosome end structural changes from ONT sequencing data.""",
+        )
 
     # Add subparsers to handle different subcommands.
-    subparsers = parser.add_subparsers(dest='subparser_name', required=True)
+    subparsers = parser.add_subparsers(title='subcommands', required=True)
     
     # Example subcommand 1: 'function1'
     subparser_function1 = subparsers.add_parser('function1', help='Description of function1',

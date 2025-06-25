@@ -66,7 +66,7 @@ test:
 
 about:
   home: https://github.com/Jacob-M-Wells/TeloTracker
-  license: MIT
+  license: GPLv3
   license_file: LICENSE
   summary: "TeloTracker: A tool for telomere analysis in yeast."
 

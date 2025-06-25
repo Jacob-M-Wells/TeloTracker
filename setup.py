@@ -5,6 +5,14 @@ like this: `python3 setup.py install`, or (probably better) like this: `pip3 ins
 
 Copyright 2025 Jacob M. Wells (jacobwells1203@gmail.com)
 https://github.com/Jacob-M-Wells/TeloTracker
+
+This file is part of TeloTracker. TeloTracker is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by the Free Software Foundation,
+either version 3 of the License, or (at your option) any later version. TeloTracker is distributed
+in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+details. You should have received a copy of the GNU General Public License along with TeloTracker.
+If not, see <http://www.gnu.org/licenses/>.
 """
 
 from setuptools import setup, find_packages
@@ -14,8 +22,10 @@ with open('telotracker/version.py', 'r') as f:
     lines = f.readlines()
     __version__ = "0.0.0"
     for line in lines:
-        if "__version__ = " in line:
-            __version__ = line.split(" = ")[1]
+        if "__version__" in line:
+            # Strip whitespace, then remove both single or double quotes
+            __version__ = line.split("=")[1].strip().strip('"').strip("'")
+            break
 
 # Read long description from README
 with open('README.md', 'r') as f:
@@ -30,7 +40,7 @@ setup(
     url="https://github.com/Jacob-M-Wells/TeloTracker",
     author="Jacob M. Wells",
     author_email="jacobwells1203@gmail.com",
-    license='MIT License',
+    license='GPLv3',
     packages=find_packages(),
     python_requires="3.11",
     install_requires=[
@@ -57,7 +67,7 @@ setup(
     },
     entry_points={
         "console_scripts": [
-            "telotracker=telotracker.main:main",
+            "telotracker=telotracker.__main__:main",
         ],
     },
     include_package_data=True,
